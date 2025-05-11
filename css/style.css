@@ -1,0 +1,217 @@
+/* GENEL STİLLER */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #212529;
+  transition: background-color 0.4s, color 0.4s;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #8e44ad, #9b59b6);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* FOOTER */
+footer {
+  background-color: #eee;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
+/* SLIDER GÖRSELLERİ */
+.slider-img {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/* SLIDER ALT YAZI */
+.slider-caption {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 14px;
+}
+
+.slider-caption h5 {
+  font-size: 1.1rem;
+}
+
+.slider-caption p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+/* SLIDER BUTONLARI */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  background-size: 60% 60%;
+  padding: 12px;
+}
+
+#leblebiContainer img.leblebi {
+  position: fixed;
+  top: -60px; /* ekranın dışından başlat */
+  width: 40px;
+  height: 40px;
+  z-index: 1000; /* daha üstte kalsın */
+  opacity: 0.85;
+  animation: fall 10s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes fall {
+  0% { transform: translateY(-50px) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* GECE MODU */
+body.dark-mode {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, #222, #333);
+}
+
+body.dark-mode footer {
+  background-color: #1e1e1e;
+  color: #ccc;
+}
+
+body.dark-mode .slider-caption {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #eee;
+}
+
+/* CV KUTUSU */
+.cv-box {
+  background-color: #f8f9fa;
+  border-left: 5px solid #8e44ad;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.cv-box h2 {
+  color: #8e44ad;
+  margin-bottom: 15px;
+}
+
+body.dark-mode .cv-box {
+  background-color: #1e1e1e;
+  border-left-color: #c678dd;
+}
+
+body.dark-mode .cv-box h2 {
+  color: #c678dd;
+}
+
+/* BLOCKQUOTE */
+.blockquote {
+  font-style: italic;
+  color: #555;
+  border-left: 4px solid #ccc;
+  padding-left: 15px;
+  margin: 15px 0;
+}
+
+body.dark-mode .blockquote {
+  color: #ccc;
+}
+
+/* FADE IN ANİMASYON */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+/* Yemek Görseli */
+.yemek-gorsel {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  opacity: 0;
+  animation: fadeZoom 1s ease forwards;
+}
+
+@keyframes fadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.yemek-gorsel:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Profil Fotoğrafı */
+.profil-foto {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #8e44ad;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.profil-foto:hover {
+  transform: scale(1.05);
+}
+
+body.dark-mode .text-muted {
+  color: #bbb !important;
+}
+
+/* Başlık Fade In */
+.fade-heading {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeSlide 0.9s ease forwards;
+}
+
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
