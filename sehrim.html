@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Şevval Melike Kaya - Şehrim</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    h1 { font-size: 28px; }
+    h2 { font-size: 22px; }
+    h5 { font-size: 18px; }
+    p, li { font-size: 15px; }
+
+    .slider-img {
+      max-width: 400px;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      margin: auto;
+      border-radius: 10px;
+    }
+
+    .slider-caption {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      border-radius: 8px;
+      color: white;
+    }
+
+    #leblebiContainer img.leblebi {
+      position: fixed;
+      width: 35px;
+      height: 35px;
+      z-index: 10;
+      opacity: 0.85;
+      animation: fall 8s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #f0f0f0;
+    }
+    body.dark-mode header {
+      background: #333;
+      color: #fff;
+    }
+    body.dark-mode footer {
+      background: #222;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Şevval</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Hakkında</a></li>
+        <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
+        <li class="nav-item"><a class="nav-link active" href="sehrim.html">Şehrim</a></li>
+        <li class="nav-item"><a class="nav-link" href="miras.html">Mirasımız</a></li>
+        <li class="nav-item"><a class="nav-link" href="ilgi.html">İlgi Alanlarım</a></li>
+        <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+        <li class="nav-item"><a class="nav-link" href="login.html">Giriş</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Gece Modu Butonu -->
+<button id="darkModeBtn" class="btn btn-dark position-fixed top-0 end-0 m-3 z-3">🌙</button>
+
+<!-- Leblebi Efekti -->
+<div id="leblebiContainer"></div>
+
+<!-- Başlık -->
+<header class="text-white text-center py-4" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
+  <h1>Memleketim: Çorum</h1>
+  <p>Karadeniz’in kalbinde kültürel ve tarihsel zenginlik.</p>
+</header>
+
+<!-- İçerik -->
+<div class="container my-5">
+  <section class="mb-5">
+  <h2>Genel Bilgi</h2>
+  <p><strong>Çorum</strong>, Türkiye’nin Karadeniz Bölgesi’nin iç kesiminde yer alan, tarihi, kültürel ve sanayi yönüyle öne çıkan bir ildir. Özellikle Hitit medeniyetine ait kalıntılar ve arkeolojik zenginlikleriyle tanınır. Şehir merkeziyle birlikte 14 ilçeden oluşur.</p>
+
+  <h5>Tarihçe</h5>
+  <p>Çorum toprakları, tarihin bilinen en eski medeniyetlerinden biri olan <strong>Hititler</strong>’e ev sahipliği yapmıştır. Başkent <strong>Hattuşa</strong>, UNESCO Dünya Mirası Listesi’ndedir. Alacahöyük ve Ortaköy–Şapinuva gibi kazı alanlarında Hatti, Hitit, Frig, Roma ve Bizans dönemlerine ait eserler bulunmuştur. Ayrıca Osmanlı döneminden kalan birçok cami, köprü ve han da şehirde yer alır.</p>
+
+  <h5>Coğrafi Konum</h5>
+  <p>İç Karadeniz Bölümü'nde yer alır ama coğrafi ve iklimsel özellikleri bakımından İç Anadolu’ya da benzer. Doğusunda Amasya, güneyinde Yozgat, batısında Çankırı, kuzeyinde Sinop, kuzeydoğusunda Samsun, güneybatısında Kırıkkale bulunur. Rakımı yaklaşık <strong>820 metre</strong> olup karasal iklim hâkimdir.</p>
+
+  <h5>Nüfus ve Ekonomi</h5>
+  <p>2023 TÜİK verilerine göre şehir merkezinin nüfusu yaklaşık <strong>300.000</strong>, il genelinin nüfusu ise <strong>530.000</strong> civarındadır. Sanayi açısından gelişmiştir. Özellikle:</p>
+  <ul>
+    <li>Makine sanayi</li>
+    <li>Seramik ve karo üretimi</li>
+    <li>Tarım aletleri</li>
+    <li>Gıda sektörü (leblebi, un, nişasta, şekerleme)</li>
+  </ul>
+  <p>Türkiye’de “<strong>leblebi</strong>” denilince akla gelen ilk şehir Çorum’dur.</p>
+
+  <h5>Kültür ve Turizm</h5>
+  <p>Hattuşa (Boğazkale), Alacahöyük, Yazılıkaya gibi tarihi mekanlar her yıl binlerce yerli ve yabancı turist çeker. Koyunbaba Köprüsü, Ulu Camii, Saat Kulesi gibi yapılar Osmanlı mimarisini yansıtır. İncesu Kanyonu doğaseverler için önemli bir yürüyüş ve kamp alanıdır.</p>
+
+  <h5>Yemek Kültürü</h5>
+  <p>Çorum mutfağı İç Anadolu ve Karadeniz mutfaklarının karışımı gibidir. Öne çıkan lezzetler:</p>
+  <ul>
+    <li>Etli dolma</li>
+    <li>Tirit</li>
+    <li>Helle çorbası</li>
+    <li>Keşkek</li>
+    <li>Leblebili pilav</li>
+    <li>Sırık kebabı</li>
+  </ul>
+
+  <h5>Eğitim</h5>
+  <p>2006 yılında kurulan <strong>Hitit Üniversitesi</strong>, şehrin akademik gelişimine katkı sağlamaktadır. Üniversite farklı fakülteleri, MYO’ları ve teknokenti ile gelişmektedir.</p>
+
+  <div class="text-center mt-4">
+    <a href="#" data-bs-toggle="modal" data-bs-target="#haritaModal">
+      <img src="img/corum-haritasi.jpg" alt="Çorum Haritası" class="img-fluid rounded shadow" style="max-width: 400px;">
+    </a>
+    <p class="mt-2"><em>Harita - büyütmek için tıklayın</em></p>
+  </div>
+</section>
+
+  <!-- Slider -->
+  <div id="gezilecekSlider" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img src="img/alacahoyuk.jpg" class="d-block w-100 slider-img" alt="Alacahöyük">
+        <div class="carousel-caption slider-caption">
+          <h5><a href="icerik/alacahoyuk.html" class="text-white text-decoration-underline">Alacahöyük</a></h5>
+          <p>Çorum’un önemli arkeolojik alanı.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/hattusa.jpg" class="d-block w-100 slider-img" alt="Hattuşa">
+        <div class="carousel-caption slider-caption">
+          <h5><a href="icerik/hattusa.html" class="text-white text-decoration-underline">Hattuşa</a></h5>
+          <p>UNESCO listesinde yer alan Hitit başkenti.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/incesu.jpg" class="d-block w-100 slider-img" alt="İncesu Kanyonu">
+        <div class="carousel-caption slider-caption">
+          <h5><a href="icerik/incesu.html" class="text-white text-decoration-underline">İncesu Kanyonu</a></h5>
+          <p>Doğa yürüyüşleri için popüler bir kanyon.</p>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/koyunbaba.jpg" class="d-block w-100 slider-img" alt="Koyunbaba Köprüsü">
+        <div class="carousel-caption slider-caption">
+          <h5><a href="icerik/koyunbaba.html" class="text-white text-decoration-underline">Koyunbaba Köprüsü</a></h5>
+          <p>Osmancık’taki tarihi Osmanlı köprüsü.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#gezilecekSlider" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#gezilecekSlider" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+<!-- Harita Modal -->
+<div class="modal fade" id="haritaModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-dark">
+      <div class="modal-body p-0">
+        <img src="img/corum-haritasi.jpg" class="img-fluid w-100" alt="Çorum Haritası">
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-light text-center py-3">
+  <p>&copy; 2025 Şevval Melike Kaya</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Gece modu
+  document.getElementById("darkModeBtn").addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+
+  // Leblebi animasyonu
+  const container = document.getElementById("leblebiContainer");
+  for (let i = 0; i < 30; i++) {
+    const img = document.createElement("img");
+    img.src = "img/leblebi.png";
+    img.classList.add("leblebi");
+    img.style.left = Math.random() * 100 + "vw";
+    img.style.animationDelay = Math.random() * 8 + "s";
+    container.appendChild(img);
+  }
+</script>
+
+</body>
+</html>
