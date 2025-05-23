@@ -4,14 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>İletişim</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .cv-box {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
-
-<!-- 🌙 Gece Modu Butonu -->
-<button id="darkModeBtn" class="btn btn-dark position-fixed top-0 end-0 m-3 z-3">🌙</button>
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -26,7 +34,7 @@
         <li class="nav-item"><a class="nav-link" href="cv.html">CV</a></li>
         <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
         <li class="nav-item"><a class="nav-link" href="miras.html">Mirasımız</a></li>
-        <li class="nav-item"><a class="nav-link" href="ilgi.html">İlgi Alanlarım</a></li>
+        <li class="nav-item"><a class="nav-link" href="ilgi.html">İlgi Alanım</a></li>
         <li class="nav-item"><a class="nav-link active" href="iletisim.html">İletişim</a></li>
         <li class="nav-item"><a class="nav-link" href="login.html">Giriş</a></li>
       </ul>
@@ -34,16 +42,8 @@
   </div>
 </nav>
 
-<!-- Başlık -->
-<header class="text-white text-center py-4" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
-  <h1>İletişim</h1>
-  <p>Benimle iletişime geçmek için formu doldurun.</p>
-</header>
-
-<!-- Form Alanı -->
 <div class="container my-5" id="app">
-  <form @submit.prevent="gonderFormu" class="row g-3 cv-box fade-in">
-
+  <form class="row g-3 cv-box" @submit.prevent="gonderFormu">
     <div class="col-md-6">
       <label for="ad" class="form-label">Ad Soyad</label>
       <input type="text" v-model="form.ad" class="form-control" id="ad" />
@@ -56,8 +56,7 @@
 
     <div class="col-md-6">
       <label for="telefon" class="form-label">Telefon</label>
-      <input type="text" v-model="form.telefon" class="form-control" id="telefon"
-             @keypress="sadeceRakam($event)" />
+      <input type="text" v-model="form.telefon" class="form-control" id="telefon" @keypress="sadeceRakam($event)" />
     </div>
 
     <div class="col-md-6">
@@ -90,20 +89,20 @@
 
     <div class="col-12 text-danger" v-if="hata">{{ hata }}</div>
 
-    <div class="col-12 text-end">
-      <button type="button" @click="temizleFormu" class="btn btn-secondary me-2">Temizle</button>
-      <button type="submit" class="btn btn-primary">Gönder</button>
+    <div class="col-12 d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-secondary" @click="temizleFormu">Temizle</button>
+      <button type="button" class="btn btn-success" @click="jsKontrol">JS ile Gönder</button>
+      <button type="button" class="btn btn-primary" @click="vueKontrol">Vue.js ile Gönder</button>
+      <button type="submit" class="btn btn-dark">Gönder</button>
     </div>
-
   </form>
 </div>
 
 <!-- Footer -->
-<footer class="text-center py-3 mt-5 bg-light">
+<footer class="text-center py-3 bg-light mt-5">
   <p>&copy; 2025 Şevval Melike Kaya</p>
 </footer>
 
-<!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 const { createApp } = Vue;
@@ -124,50 +123,44 @@ createApp({
   },
   methods: {
     temizleFormu() {
-      this.form = {
-        ad: '',
-        email: '',
-        telefon: '',
-        cinsiyet: '',
-        ilgi: '',
-        mesaj: ''
-      };
+      this.form = { ad: '', email: '', telefon: '', cinsiyet: '', ilgi: '', mesaj: '' };
       this.hata = '';
     },
     sadeceRakam(e) {
       const char = String.fromCharCode(e.keyCode);
-      if (!/[0-9]/.test(char)) {
-        e.preventDefault();
+      if (!/[0-9]/.test(char)) e.preventDefault();
+    },
+    vueKontrol() {
+      this.hata = '';
+      const { ad, email, telefon, cinsiyet, ilgi, mesaj } = this.form;
+      if (!ad || !email || !telefon || !cinsiyet || !ilgi || !mesaj) {
+        this.hata = 'Lütfen tüm alanları doldurun.';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        this.hata = 'Geçerli bir e-posta giriniz.';
+      } else if (!/^[0-9]{10,15}$/.test(telefon)) {
+        this.hata = 'Telefon yalnızca rakam içermeli (10-15 hane).';
+      } else {
+        window.location.href = 'form-sonuc.html?' + new URLSearchParams(this.form).toString();
+      }
+    },
+    jsKontrol() {
+      const f = this.form;
+      if (!f.ad || !f.email || !f.telefon || !f.cinsiyet || !f.ilgi || !f.mesaj) {
+        alert('Tüm alanları doldurun (JS kontrol)');
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) {
+        alert('E-posta geçerli değil (JS kontrol)');
+      } else if (!/^[0-9]{10,15}$/.test(f.telefon)) {
+        alert('Telefon hatalı (JS kontrol)');
+      } else {
+        window.location.href = 'form-sonuc.html?' + new URLSearchParams(this.form).toString();
       }
     },
     gonderFormu() {
-      if (!this.form.ad || !this.form.email || !this.form.telefon || !this.form.cinsiyet || !this.form.ilgi || !this.form.mesaj) {
-        this.hata = 'Lütfen tüm alanları doldurun.';
-        return;
-      }
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(this.form.email)) {
-        this.hata = 'Geçerli bir e-posta giriniz.';
-        return;
-      }
-      const telefonRegex = /^[0-9]{10,15}$/;
-      if (!telefonRegex.test(this.form.telefon)) {
-        this.hata = 'Telefon yalnızca rakam içermeli (10-15 hane).';
-        return;
-      }
-
-      const query = new URLSearchParams(this.form).toString();
-      window.location.href = 'form-sonuc.html?' + query;
+      // Ekstra doğrulama yapmadan Vue.js ile yönlendir
+      window.location.href = 'form-sonuc.html?' + new URLSearchParams(this.form).toString();
     }
   }
 }).mount('#app');
-
-// 🌙 Gece Modu
-document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("darkModeBtn").addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-  });
-});
 </script>
 
 </body>
